@@ -23,7 +23,7 @@ if (!config.SERVER_URL) { //used for ink to static files
  *
  */
 
-exports.handler = function(event, context, callback) {
+exports.handler = function(event, context) {
 
 // function index(event, context, callback) {
 
@@ -42,16 +42,17 @@ text: 'hi' }
   let message = event.text,
       user_id = event.user_id,
       channel_id = event.channel_id;
-  console.log(message,user_id,channel_id);
+
   // let message = 'i want to buy beer as gift',
   //     user_id= 'U2147483697',
   //     channel_id = 'C2147483705';
 
   ai.receiveMessage(message, channel_id, user_id, function(response){
+    
+    var response = { "text": response };
     console.log(response);
     return response;
   });
-    return 'test';
 };
 
 // index();
