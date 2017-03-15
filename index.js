@@ -1,6 +1,7 @@
 'use strict';
 
 const apiai = require('apiai');
+const util = require('util');
 const config = require('./config');
 const ai = require('./ai');
 const helper = require('./helper');
@@ -23,7 +24,7 @@ if (!config.SERVER_URL) { //used for ink to static files
  *
  */
 
-exports.handler = function(event, context) {
+exports.handler = function(event, context, callback) {
 
 // function index(event, context, callback) {
 
@@ -48,10 +49,9 @@ text: 'hi' }
   //     channel_id = 'C2147483705';
 
   ai.receiveMessage(message, channel_id, user_id, function(response){
-    
     // var response = { "text": response };
     console.log(response);
-    return response;
+    callback(null, response);
   });
 };
 
