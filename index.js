@@ -49,7 +49,7 @@ text: 'hi' }
 
   ai.receiveMessage(message, channel_id, user_id, function(response){
     
-    var response = { "text": response };
+    // var response = { "text": response };
     console.log(response);
     return response;
   });
